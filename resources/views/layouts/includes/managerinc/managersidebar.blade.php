@@ -23,13 +23,13 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="{{route('manager.attendance')}}">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Attendance</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
+                <a class="sidebar-link" href="{{route('manager.workforce')}}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Workforce Management</span>
                 </a>
             </li>

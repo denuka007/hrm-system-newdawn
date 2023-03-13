@@ -69,7 +69,6 @@
                                         <a href="{{ route('manager.editEmp' , $emp->id) }}" class="btn btn-success btn-rounded btn-sm">Edit</a>
                                         <a href="{{ route('manager.deleteEmp' , $emp->id) }}" class="btn btn-danger btn-rounded btn-sm">Delete</a>
                                         <a href="{{ route('manager.viewEmp' , $emp->id) }}" class="btn btn-primary btn-rounded btn-sm">View</a>
-
                                     </td>
                                 </tr>
                             @endforeach

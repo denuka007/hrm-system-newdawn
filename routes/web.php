@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ManagerControllers\EmployeeController;
+use App\Http\Controllers\ManagerControllers\AttendanceController;
+use App\Http\Controllers\ManagerControllers\WorkforceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +52,21 @@ Route::prefix('manager')->group(function (){
     //Department
     Route::get('/department/register',[EmployeeController::class, 'ManagerDepReg'])->name('manage.depreg');
     Route::post('/department/register/complete',[EmployeeController::class, 'ManagerDepCreate'])->name('manager.depregister');
+    Route::get('/department/delete/{Id}',[EmployeeController::class, 'ManagerDeleteDep'])->name('manager.depdelete');
     //Employee View/Edit/Delete
     Route::get('/view/profile/{Id}',[EmployeeController::class, 'ManagerViewEmp'])->name('manager.viewEmp');
     Route::get('/employee/delete/{Id}',[EmployeeController::class, 'ManagerDeleteEmp'])->name('manager.deleteEmp');
-    Route::put('/employee/Edit/{Id}',[EmployeeController::class, 'ManagerUpdateEmp'])->name('manager.editEmp');
+    Route::get('/employee/edit/{Id}',[EmployeeController::class, 'ManagerUpdateEmp'])->name('manager.editEmp');
+    Route::put('/employee/edit/done/{Id}',[EmployeeController::class, 'ManagerUpdateEmpDone'])->name('manager.updateEmpDone');
+    //Attendance
+    Route::get('/attendance',[AttendanceController::class, 'AttendanceView'])->name('manager.attendance');
+    Route::get('/attendance/mark/{Id}',[AttendanceController::class, 'AttendanceMark'])->name('manager.attmark');
+    Route::get('/attendance/absant/{Id}',[AttendanceController::class, 'AttendanceAbsantMark'])->name('manager.attabsant');
+    Route::get('/attendance/view',[AttendanceController::class, 'AttendanceEmps'])->name('manager.attendanceview');
+    Route::get('/attendance/view/pdf',[AttendanceController::class, 'AttendancePDF'])->name('manager.attendancepdf');
+    //Workforce
+    Route::get('/workforce',[WorkforceController::class, 'AttendanceView'])->name('manager.workforce');
+    Route::get('/workforce/shifts',[WorkforceController::class, 'ShiftView'])->name('manager.shift');
 
 
 

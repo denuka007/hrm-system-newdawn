@@ -53,7 +53,9 @@ class EmployeeController extends Controller
     }
 
     public function ManagerDepReg() {
-        return view('managerr.manager_depreg');
+
+        $dep = Department::all();
+        return view('managerr.manager_depreg', compact('dep'));
     }
 
     public function ManagerDepCreate(Request $request) {
@@ -64,6 +66,14 @@ class EmployeeController extends Controller
         ]);
 
         return back()->with('status',"New Department Adding Success");
+    }
+
+    public function ManagerDeleteDep($Id) {
+
+        $dep = Department::find($Id);
+        //Image Delete Required!!!
+        $dep->delete();
+        return back()->with('status',"Department delete is Success");
     }
 
     public function ManagerViewEmp($Id) {
@@ -82,6 +92,39 @@ class EmployeeController extends Controller
 
     public function ManagerUpdateEmp($Id) {
 
-        return view('managerr.manager_empupdate');
+        $employees = User::find($Id);
+        return view('managerr.manager_empupdate', compact('employees'));
+    }
+
+    public function ManagerUpdateEmpDone(Request $request,$Id) {
+
+        $employee = User::find($Id);
+
+        //Image Updating
+       if($request->hasfile('image'))
+       {
+         $filename = time() . "." . $request->image->extension();
+         $request->image->move(public_path('assets/uploads'), $filename);
+         $employee->propic = $filename;
+       }
+       else
+       {
+        $employee->name = $request->name;
+        $employee->address = $request->address;
+        $employee->age = $request->age;
+        $employee->nic = $request->nic;
+        $employee->gender = $request->gender;
+        $employee->civil = $request->civil;
+        $employee->mobile = $request->number;
+        $employee->position = $request->position;
+        $employee->qualification = $request->qualification;
+        $employee->worktype = $request->worktype;
+        $employee->emname = $request->emname;
+        $employee->emcontact = $request->emcontact;
+        $employee->email = $request->email;
+        $employee->save();
+       }
+
+        return redirect(route('manager.emp'))->with('status',"Employee Update Success");
     }
 }

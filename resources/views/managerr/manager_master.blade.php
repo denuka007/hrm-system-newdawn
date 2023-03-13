@@ -14,7 +14,9 @@
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
@@ -77,6 +79,28 @@
             swal({
                 title: "Done",
                 text: "{{ session::get('status') }}",
+                icon: "success",
+                button: "Ok",
+            });
+        </script>
+    @endif
+
+    @if (Session::has('error'))
+        <script>
+            swal({
+                title: "Error",
+                text: "{{ session::get('error') }}",
+                icon: "error",
+                button: "Ok",
+            });
+        </script>
+    @endif
+
+    @if (Session::has('stat'))
+        <script>
+            swal({
+                title: "Done",
+                text: "{{ session::get('stat') }}",
                 icon: "success",
                 button: "Ok",
             });
