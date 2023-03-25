@@ -26,7 +26,7 @@
                                     <h1 class="mt-1 mb-3">12</h1>
 
                                     <div class="mb-0">
-                                        <button class="btn btn-info btn-rounded">View Absants</button>
+                                        <a href="{{route('manager.absantview')}}" class="btn btn-info btn-rounded">View Absants</a>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Department</th>
+                                    <th scope="col">WorkType</th>
                                     <th scope="col">Position</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -106,7 +106,7 @@
                                 <tr>
                                     <th scope="row">{{ $emp->empId }}</th>
                                     <td>{{ $emp->name }}</td>
-                                    <td>In future</td>
+                                    <td>{{ $emp->worktype }}</td>
                                     <td>{{ $emp->position }}</td>
                                     <td>
                                         <a href="{{ route('manager.attmark' , $emp->empId) }}" class="btn btn-link btn-sm px-3" data-ripple-color="dark"><i class="fas fa-check"></i></a>

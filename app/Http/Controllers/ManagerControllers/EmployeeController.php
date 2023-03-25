@@ -40,6 +40,7 @@ class EmployeeController extends Controller
             'gender'=> $request->gender,
             'mobile'=> $request->number,
             'position'=> $request->position,
+            'workstatus'=> 0,
             'qualification'=> $request->qualification,
             'worktype'=> $request->worktype,
             'emname'=> $request->emname,
@@ -62,7 +63,8 @@ class EmployeeController extends Controller
 
         Department::create([
             'depId'=> $request->depid,
-            'depName'=> $request->name
+            'depName'=> $request->name,
+            'empcount'=> 0
         ]);
 
         return back()->with('status',"New Department Adding Success");

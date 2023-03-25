@@ -13,6 +13,7 @@ use App\Models\AttendanceLog;
 use App\Models\Absant;
 use App\Models\AbsantMemory;
 use App\Models\AttendanceMemory;
+use App\Models\WorkHoursNormal;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class AttendanceController extends Controller
@@ -150,6 +151,40 @@ class AttendanceController extends Controller
         $att = Attendance::all();
         $pdf = Pdf::loadView('managerr.pdf.attendance',['att'=>$att]);
         return $pdf->download('attendance.pdf');
+     }
+
+     public function AbsantView() {
+
+        $ab = Absant::all();
+        return view('managerr.manager_absant', compact('ab'));
+     }
+
+     public function AttendanceOff($Id) {
+
+        //define work hours
+        $offtime = carbon::now()->toTimeString();
+        $arrivetime = DB::table('attendances')
+             ->where('empId', $Id)
+             ->get();
+
+        foreach($arrivetime as $arr)
+        $leavetime = $arr->arrivetime;
+        $one = (double)$leavetime;
+        $two = (double)$offtime;
+        $result = $two - $one;
+
+        //define date
+        $date = carbon::now()->toDateString();
+
+        //enter data to db
+        $workhours = new WorkHoursNormal();
+        $workhours->empId = $Id;
+        $workhours->workhours = $result;
+        $workhours->date = $date;
+        $workhours->save();
+
+        DB::table('attendances')->where('empId', $Id)->delete();
+        return back()->with('status',"Employee Off From Work");
      }
 
 }

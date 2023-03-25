@@ -62,7 +62,7 @@
                                         <p class="text-muted mb-0"></p>
                                     </td>
                                     <td>
-                                        <span class="badge badge-success rounded-pill d-inline">Active</span>
+                                        <span class="badge bg-{{$emp->workstatus == 0 ? 'success' : 'warning'}}">{{$emp->workstatus == 0 ? 'Free' : 'Busy'}}</span>
                                     </td>
                                     <td>{{ $emp->worktype }}</td>
                                     <td>

@@ -35,6 +35,12 @@
             </li>
 
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('manager.overtime')}}">
+                    <i class="align-middle" data-feather="clock"></i> <span class="align-middle">OverTime</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
                     <i class="align-middle" data-feather="dollar-sign"></i> <span class="align-middle">PayRoll Management</span>
                 </a>

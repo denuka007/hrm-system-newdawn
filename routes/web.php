@@ -7,6 +7,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ManagerControllers\EmployeeController;
 use App\Http\Controllers\ManagerControllers\AttendanceController;
 use App\Http\Controllers\ManagerControllers\WorkforceController;
+use App\Http\Controllers\ManagerControllers\OverTimeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,12 +62,34 @@ Route::prefix('manager')->group(function (){
     //Attendance
     Route::get('/attendance',[AttendanceController::class, 'AttendanceView'])->name('manager.attendance');
     Route::get('/attendance/mark/{Id}',[AttendanceController::class, 'AttendanceMark'])->name('manager.attmark');
-    Route::get('/attendance/absant/{Id}',[AttendanceController::class, 'AttendanceAbsantMark'])->name('manager.attabsant');
     Route::get('/attendance/view',[AttendanceController::class, 'AttendanceEmps'])->name('manager.attendanceview');
     Route::get('/attendance/view/pdf',[AttendanceController::class, 'AttendancePDF'])->name('manager.attendancepdf');
+    Route::get('/attendance/view/off/{Id}',[AttendanceController::class, 'AttendanceOff'])->name('manager.attendanceoff');
+    //absant
+    Route::get('/attendance/absant/{Id}',[AttendanceController::class, 'AttendanceAbsantMark'])->name('manager.attabsant');
+    Route::get('/attendance/absantview',[AttendanceController::class, 'AbsantView'])->name('manager.absantview');
     //Workforce
     Route::get('/workforce',[WorkforceController::class, 'AttendanceView'])->name('manager.workforce');
     Route::get('/workforce/shifts',[WorkforceController::class, 'ShiftView'])->name('manager.shift');
+    Route::post('/workforce/shifts/register',[WorkforceController::class, 'ManagerShiftReg'])->name('manager.shiftreg');
+    Route::get('/workforce/shifts/{Id}',[WorkforceController::class, 'ManagerShiftEdit'])->name('manager.shiftedit');
+    Route::put('/workforce/shifts/done/{Id}',[WorkforceController::class, 'ManagerUpdateShift'])->name('manager.updateshift');
+    Route::get('/workforce/shifts/delete/{Id}',[WorkforceController::class, 'ManagerDeleteShift'])->name('manager.shiftdelete');
+    //department Manage
+    Route::get('/workforce/depmanage',[WorkforceController::class, 'DepartmentManage'])->name('manager.depmanage');
+    Route::get('/workforce/depmanage/active/{Id}',[WorkforceController::class, 'DepartmentActive'])->name('manager.depactive');
+    Route::get('/workforce/depmanage/Shutdown/{Id}',[WorkforceController::class, 'DepartmentShutdown'])->name('manager.depshutdown');
+    //Employee Assignment
+    Route::get('/workforce/employeeassign',[WorkforceController::class, 'EmployeeAssignView'])->name('manager.empassign');
+    Route::get('/workforce/employeeassign/assignwork/{Id}',[WorkforceController::class, 'EmployeeAssignBoth'])->name('manager.assignboth');
+    Route::post('/workforce/employeeassign/assignwork/done/{Id}',[WorkforceController::class, 'ManagerAssignEmp'])->name('manager.assignbothdone');
+    Route::get('/workforce/employeeassign/resignwork/{Id}',[WorkforceController::class, 'EmployeeResign'])->name('manager.resignwork');
+    //Overtime
+    Route::get('/overtime',[OverTimeController::class, 'OverTimeView'])->name('manager.overtime');
+    Route::get('/overtime/assign',[OverTimeController::class, 'OverTimeAssign'])->name('manager.assignot');
+    Route::post('/overtime/assign/done/{Id}',[OverTimeController::class, 'OverTimeAssignDone'])->name('manager.otassigndone');
+    Route::get('/overtime/reasign/{Id}',[OverTimeController::class, 'OverTimeResign'])->name('manager.otresign');
+
 
 
 

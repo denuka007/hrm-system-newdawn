@@ -51,7 +51,7 @@
                     <td>{{$deps->depName}}</td>
                     <td class="d-none d-xl-table-cell">{{$deps->depId}}</td>
                     <td class="d-none d-xl-table-cell">{{$deps->empcount}}</td>
-                    <td><span class="badge bg-success">{{$deps->status}}</span></td>
+                    <td><span class="badge bg-{{$deps->status == 'Active' ? 'success' : 'danger'}}">{{$deps->status}}</span></td>
                     <td>
                         <a href="{{ route('manager.depdelete' , $deps->id) }}" class="btn btn-danger btn-rounded btn-sm">Delete</a>
                         <a href="#" class="btn btn-primary btn-rounded btn-sm">View</a>

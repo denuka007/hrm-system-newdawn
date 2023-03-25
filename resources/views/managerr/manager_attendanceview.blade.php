@@ -31,6 +31,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">ArriveTime</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
 
                             </tr>
                         </thead>
@@ -41,6 +42,9 @@
                                     <td>{{ $attendanceDatas->name }}</td>
                                     <td>{{ $attendanceDatas->arrivetime }}</td>
                                     <td>{{ $attendanceDatas->status == '1' ? 'Ontime' : 'LateComming' }}</td>
+                                    <td>
+                                        <a href="{{route('manager.attendanceoff', $attendanceDatas->empId)}}" class="btn btn-danger btn-rounded btn-sm">OFF</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

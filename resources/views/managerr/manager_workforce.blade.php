@@ -30,7 +30,7 @@
                                     <h3>Department Management</h3>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-success btn-rounded">Manage Departments</button>
+                                    <a href="{{route('manager.depmanage')}}" class="btn btn-success btn-rounded">Manage Departments</a>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-info btn-rounded">Assign Employees</button>
+                                    <a href="{{route('manager.empassign')}}" class="btn btn-info btn-rounded">Assign Employees</a>
                                 </div>
                             </div>
                         </div>

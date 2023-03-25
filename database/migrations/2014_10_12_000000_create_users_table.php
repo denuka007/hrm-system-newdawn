@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('mobile')->nullable();
             $table->string('position')->nullable();
             $table->string('propic')->nullable();
-            $table->string('workstatus')->nullable();
+            $table->boolean('workstatus')->nullable();
             $table->string('qualification')->nullable();
             $table->string('worktype')->nullable();
             $table->string('emname')->nullable();
