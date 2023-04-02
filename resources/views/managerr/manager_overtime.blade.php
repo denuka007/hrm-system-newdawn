@@ -73,7 +73,7 @@
                                 <h1 class="mt-1 mb-3">112 Hours</h1>
 
                                 <div class="mb-0">
-                                    <button class="btn btn-info btn-rounded">View Info</button>
+                                    <a href="{{route('manager.otinfo')}}" class="btn btn-info btn-rounded">View Info</a>
                                 </div>
                             </div>
                         </div>

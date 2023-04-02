@@ -12,6 +12,8 @@ use App\Models\Shift;
 use App\Models\ShiftAssign;
 use App\Models\DepartmentAssign;
 use App\Models\Overtime;
+use App\Models\WorkHoursOT;
+use App\Models\OtMemory;
 
 class OverTimeController extends Controller
 {
@@ -53,11 +55,44 @@ class OverTimeController extends Controller
         $overtime->status = 1;
         $overtime->save();
 
+        $otmemoey = new OtMemory();
+        $otmemoey->empId = $empid;
+        $otmemoey->name = $name;
+        $otmemoey->position = $pos;
+        $otmemoey->department = $request->depid;
+        $otmemoey->shiftId = $request->shiftid;
+        $otmemoey->Otdate = $date;
+        $otmemoey->save();
+
         return back()->with('status',"Employee Overtime is schedule");
     }
 
-    public function OverTimeResign($id) {
+    public function OverTimeResign($Id) {
 
+        $otdata = Overtime::where('empId',$Id)->get();
+        foreach($otdata as $data)
+        $otdate = $data->Otdate;
+        $otstart = $data->starttime;
 
+        $nowtime = carbon::now()->toTimeString();
+        $st = (double)$otstart;
+        $now = (double)$nowtime;
+        $oth = $st - $now;
+
+        $othours = new WorkHoursOT();
+        $othours->empId = $Id;
+        $othours->othours = $oth;
+        $othours->otdate = $otdate;
+        $othours->save();
+
+        DB::table('overtimes')->where('empId', $Id)->delete();
+
+        return back()->with('status',"Employee Off from OT");
+    }
+
+    public function OverTimeInfo() {
+
+        $emp = User::all();
+        return view('managerr.manager_OTinfo', compact('emp'));
     }
 }

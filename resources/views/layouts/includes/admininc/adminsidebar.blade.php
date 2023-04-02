@@ -23,6 +23,12 @@
             </li>
 
             <li class="sidebar-item">
+                <a class="sidebar-link" href="#">
+                    <i class="align-middle" data-feather="user-check"></i> <span class="align-middle">Attendance Details</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="pages-blank.html">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Workforce Management</span>
                 </a>

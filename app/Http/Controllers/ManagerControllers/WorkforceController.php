@@ -15,7 +15,9 @@ class WorkforceController extends Controller
 {
     public function AttendanceView() {
 
-        return view('managerr.manager_workforce');
+        $wemp = User::where('workstatus',1)->get();
+        $adep = Department::where('status','Active')->get();
+        return view('managerr.manager_workforce', compact('wemp', 'adep'));
     }
 
     public function ShiftView() {

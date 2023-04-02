@@ -62,7 +62,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
-                            <h4 class="card-title mb-2">Unassign Employees</h4>
+                            <h4 class="card-title mb-2">Currently Working Employees</h4>
                             <table class="table table-hover table-secondary border-primary">
                                 <thead>
                                     <tr class="table-primary">
@@ -72,27 +72,16 @@
                                     <th scope="col">Satus</th>
                                   </tr>
                                 </thead>
+                                @foreach ($wemp as $emps)
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>Sit</td>
-                                    <td>Amet</td>
-                                    <td>Consectetur</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Adipisicing</td>
-                                    <td>Elit</td>
-                                    <td>Sint</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td>Hic</td>
-                                    <td>Fugiat</td>
-                                    <td>Temporibus</td>
-                                  </tr>
-                                </tbody>
-
+                                    <tr>
+                                      <th scope="row">{{$emps->empId}}</th>
+                                      <td>{{$emps->name}}</td>
+                                      <td>{{$emps->position}}</td>
+                                      <td><span class="badge bg-{{$emps->workstatus == 0 ? 'success' : 'warning'}}">{{$emps->workstatus == 0 ? 'Free' : 'Busy'}}</span></td>
+                                    </tr>
+                                  </tbody>
+                                @endforeach
                               </table>
                         </div>
                         <div class="col-6">
@@ -106,26 +95,19 @@
                                     <th scope="col">Status</th>
                                   </tr>
                                 </thead>
+                                @foreach ($adep as $deps)
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>Sit</td>
-                                    <td>Amet</td>
-                                    <td>Consectetur</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Adipisicing</td>
-                                    <td>Elit</td>
-                                    <td>Sint</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td>Hic</td>
-                                    <td>Fugiat</td>
-                                    <td>Temporibus</td>
-                                  </tr>
-                                </tbody>
+                                    <tr>
+                                      <th scope="row">{{$deps->depId}}</th>
+                                      <td>{{$deps->depName}}</td>
+                                      <td>{{$deps->empcount}}</td>
+                                      <td>
+                                        <span class="badge bg-{{$deps->status == 'Active' ? 'success' : 'danger'}}">{{$deps->status}}</span>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                @endforeach
+
 
                               </table>
                         </div>

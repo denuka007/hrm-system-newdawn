@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Department;
 use App\Models\Attendance;
@@ -13,7 +14,10 @@ use App\Models\AttendanceLog;
 use App\Models\Absant;
 use App\Models\AbsantMemory;
 use App\Models\AttendanceMemory;
+use App\Models\Leaves;
 use App\Models\WorkHoursNormal;
+use App\Models\EmpInbox;
+use App\Models\ShortLeave;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class AttendanceController extends Controller
@@ -128,7 +132,7 @@ class AttendanceController extends Controller
           $attendanceLogs->save();
 
           //enter data to attendanceLog
-          $attendanceDetails =AttendanceLog::where('emp_Id',$Id)->get();
+          $attendanceDetails = AttendanceLog::where('emp_Id',$Id)->get();
           foreach($attendanceDetails as $attendanceDetails)
           $absantCount = $attendanceDetails->absant;
           $absantCount++;
@@ -168,8 +172,8 @@ class AttendanceController extends Controller
              ->get();
 
         foreach($arrivetime as $arr)
-        $leavetime = $arr->arrivetime;
-        $one = (double)$leavetime;
+        $arrtime = $arr->arrivetime;
+        $one = (double)$arrtime;
         $two = (double)$offtime;
         $result = $two - $one;
 
@@ -185,6 +189,90 @@ class AttendanceController extends Controller
 
         DB::table('attendances')->where('empId', $Id)->delete();
         return back()->with('status',"Employee Off From Work");
+     }
+
+     public function LeavesView() {
+
+        $sleave = ShortLeave::all();
+        $leaves = Leaves::all();
+        return view('managerr.manager_leaves', compact('leaves', 'sleave'));
+     }
+
+     public function LeavesAccept($Id) {
+
+        $emp = Leaves::where('id',$Id)->get();
+        foreach($emp as $emps)
+        $empid = $emps->empId;
+
+        $leavestate = Leaves::find($Id);
+        $leavestate->increment('status', 1);
+
+        $msg = new EmpInbox();
+        $msg->empId = $empid;
+        $msg->msg = 'Your Leave is Accepted By Manager';
+        $msg->type = 2;
+        $msg->save();
+
+        $atlog = new AttendanceLog();
+        $atlog->emp_Id = $empid;
+        $atlog->leaves = 1;
+        $atlog->save();
+
+        return back()->with('status',"Employee Leave is Accepted");
+     }
+
+     public function LeavesReject($Id) {
+
+        $emp = Leaves::where('id',$Id)->get();
+        foreach($emp as $emps)
+        $empid = $emps->empId;
+
+        $leavestate = Leaves::find($Id);
+        $leavestate->decrement('status', 1);
+
+        $msg = new EmpInbox();
+        $msg->empId = $empid;
+        $msg->msg = 'Your Leave is Rejected By Manager';
+        $msg->type = 1;
+        $msg->save();
+
+        return back()->with('status',"Employee Leave is Rejected");
+     }
+
+     public function ShortLeavesAccept($Id) {
+
+        $emp = ShortLeave::where('id',$Id)->get();
+        foreach($emp as $emps)
+        $empid = $emps->empId;
+
+        $findsleave = ShortLeave::find($Id);
+        $findsleave->delete();
+
+        $msg = new EmpInbox();
+        $msg->empId = $empid;
+        $msg->msg = 'Your ShortLeave is Accepted';
+        $msg->type = 2;
+        $msg->save();
+
+        return back()->with('status',"Employee ShortLeave is Accepted");
+     }
+
+     public function ShortLeavesReject($Id) {
+
+        $emp = ShortLeave::where('id',$Id)->get();
+        foreach($emp as $emps)
+        $empid = $emps->empId;
+
+        $findsleave = ShortLeave::find($Id);
+        $findsleave->delete();
+
+        $msg = new EmpInbox();
+        $msg->empId = $empid;
+        $msg->msg = 'Your ShortLeave is Rejected By Administration';
+        $msg->type = 1;
+        $msg->save();
+
+        return back()->with('status',"Employee ShortLeave is Rejected");
      }
 
 }

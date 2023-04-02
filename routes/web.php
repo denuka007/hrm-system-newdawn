@@ -8,6 +8,10 @@ use App\Http\Controllers\ManagerControllers\EmployeeController;
 use App\Http\Controllers\ManagerControllers\AttendanceController;
 use App\Http\Controllers\ManagerControllers\WorkforceController;
 use App\Http\Controllers\ManagerControllers\OverTimeController;
+use App\Http\Controllers\EmployeeControllers\EmpattendanceController;
+use App\Http\Controllers\EmployeeControllers\InboxController;
+use App\Http\Controllers\EmployeeControllers\SaleryController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +42,7 @@ Route::prefix('admin')->group(function (){
 /* ------- End Admin Routes -------  */
 
 
+
 /* ------- Manager Routes -------  */
 
 Route::prefix('manager')->group(function (){
@@ -65,6 +70,13 @@ Route::prefix('manager')->group(function (){
     Route::get('/attendance/view',[AttendanceController::class, 'AttendanceEmps'])->name('manager.attendanceview');
     Route::get('/attendance/view/pdf',[AttendanceController::class, 'AttendancePDF'])->name('manager.attendancepdf');
     Route::get('/attendance/view/off/{Id}',[AttendanceController::class, 'AttendanceOff'])->name('manager.attendanceoff');
+    //leaves
+    Route::get('/attendance/leaves',[AttendanceController::class, 'LeavesView'])->name('manager.leavesview');
+    Route::get('/attendance/leaves/accept/{Id}',[AttendanceController::class, 'LeavesAccept'])->name('manager.leaveaccept');
+    Route::get('/attendance/leaves/rejcet/{Id}',[AttendanceController::class, 'LeavesReject'])->name('manager.leavereject');
+    //shortleaves
+    Route::get('/attendance/leaves/shortleave/accept/{Id}',[AttendanceController::class, 'ShortLeavesAccept'])->name('manager.acceptshort');
+    Route::get('/attendance/leaves/shortleave/reject/{Id}',[AttendanceController::class, 'ShortLeavesReject'])->name('manager.rejectshort');
     //absant
     Route::get('/attendance/absant/{Id}',[AttendanceController::class, 'AttendanceAbsantMark'])->name('manager.attabsant');
     Route::get('/attendance/absantview',[AttendanceController::class, 'AbsantView'])->name('manager.absantview');
@@ -89,8 +101,7 @@ Route::prefix('manager')->group(function (){
     Route::get('/overtime/assign',[OverTimeController::class, 'OverTimeAssign'])->name('manager.assignot');
     Route::post('/overtime/assign/done/{Id}',[OverTimeController::class, 'OverTimeAssignDone'])->name('manager.otassigndone');
     Route::get('/overtime/reasign/{Id}',[OverTimeController::class, 'OverTimeResign'])->name('manager.otresign');
-
-
+    Route::get('/overtime/info',[OverTimeController::class, 'OverTimeInfo'])->name('manager.otinfo');
 
 
 
@@ -102,13 +113,32 @@ Route::prefix('manager')->group(function (){
 
 /* ------- End Manager Routes -------  */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
+
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+/* ------- User Routes -------  */
+
+//attendance
+Route::get('/attendance', [EmpattendanceController::class, 'AttendanceView'])->middleware(['auth', 'verified'])->name('emp.attendance');
+Route::post('/attendance/leaves/{Id}', [EmpattendanceController::class, 'LeaveRequest'])->middleware(['auth', 'verified'])->name('emp.leaverequest');
+Route::get('/inbox', [InboxController::class, 'InboxView'])->middleware(['auth', 'verified'])->name('emp.inboxview');
+Route::get('/attendance/shortleave/{Id}', [EmpattendanceController::class, 'ShortLeave'])->middleware(['auth', 'verified'])->name('emp.shortleave');
+Route::get('/inbox/clearall', [InboxController::class, 'ClearAll'])->middleware(['auth', 'verified'])->name('emp.clearall');
+Route::get('/attendance/clearleave/{Id}', [EmpattendanceController::class, 'ClearLeave'])->middleware(['auth', 'verified'])->name('emp.leavecancel');
+Route::get('/salery', [SaleryController::class, 'SaleryView'])->middleware(['auth', 'verified'])->name('emp.saleryview');
+
+/* ------- End of User Routes -------  */
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

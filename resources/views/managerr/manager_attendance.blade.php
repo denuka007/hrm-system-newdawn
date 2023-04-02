@@ -60,7 +60,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col mt-0">
-                                            <h5 class="card-title">Today Leaves</h5>
+                                            <h5 class="card-title">Leaves and ShortLeaves</h5>
                                         </div>
 
                                         <div class="col-auto">
@@ -72,7 +72,7 @@
                                     <h1 class="mt-1 mb-3">12</h1>
 
                                     <div class="mb-0">
-                                        <button class="btn btn-danger btn-rounded">View Leaves</button>
+                                        <a href="{{route('manager.leavesview')}}" class="btn btn-danger btn-rounded">View Leaves & ShortLeaves</a>
                                     </div>
                                 </div>
                             </div>

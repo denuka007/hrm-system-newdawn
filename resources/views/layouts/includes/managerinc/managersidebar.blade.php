@@ -24,7 +24,7 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('manager.attendance')}}">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Attendance</span>
+                    <i class="align-middle" data-feather="user-check"></i> <span class="align-middle">Attendance</span>
                 </a>
             </li>
 

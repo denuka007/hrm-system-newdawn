@@ -1,17 +1,117 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('employee.emp_master')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+@section('content')
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+      <div class="col-lg-8 mb-4 order-0">
+        <div class="card">
+          <div class="d-flex align-items-end row">
+            <div class="col-sm-7">
+              <div class="card-body">
+                <h5 class="card-title text-primary">Welcome {{Auth::user()->name}}</h5>
+                <p class="mb-4">
+                  This is NewDawn Garment Factory Employee Dashboard that you can Manage and Monitor your behaviour.
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-5 text-center text-sm-left">
+              <div class="card-body pb-0 px-0 px-md-4">
+                <img
+                  src="{{asset('emp/img/illustrations/man-with-laptop-light.png')}}"
+                  height="140"
+                  alt="View Badge User"
+                  data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                  data-app-light-img="illustrations/man-with-laptop-light.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 order-1">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                  <p>New icon here</p>
+                </div>
+                <span class="d-block mb-1">This Month Salery</span>
+                <h3 class="card-title mb-2">Rs: XXXX</h3>
+                <!--<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>-->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <p>New icon here</p>
+                </div>
+                <span class="d-block mb-1">Available Leaves</span>
+                <h3 class="card-title mb-2">3</h3>
+                <!--<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="card">
+          <div class="row row-bordered g-0">
+            <div class="col-md-12">
+
+              <h5 class="card-header m-0 me-2 pb-3 d-flex justify-content-center">Notifications</h5>
+
+              <div class="alert alert-primary ms-4 me-4 d-flex justify-content-center" role="alert">Content Add Here</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+        <div class="row">
+          <div class="col-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <p>New icon here</p>
+                </div>
+                <span class="d-block mb-1">Department</span>
+                <h3 class="card-title text-nowrap mb-2">Cutting</h3>
+                <!--<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>-->
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <p>New icon here</p>
+                </div>
+                <span class="fw-semibold d-block mb-1">Shift</span>
+                <h3 class="card-title mb-2">SF-01</h3>
+                <!--<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>-->
+              </div>
+            </div>
+          </div>
+          <!-- </div>
+                  <div class="row"> -->
+
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Empty card</h5>
+                </div>
+                <div class="card-body">
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+  </div>
+@endsection
