@@ -73,6 +73,17 @@
         </script>
     @endif
 
+    @if (Session::has('status'))
+        <script>
+            swal({
+                title: "Welcome",
+                text: "{{ session::get('status') }}",
+                icon: "success",
+                button: "Ok",
+            });
+        </script>
+    @endif
+
     @if (Session::has('error'))
         <script>
             swal({

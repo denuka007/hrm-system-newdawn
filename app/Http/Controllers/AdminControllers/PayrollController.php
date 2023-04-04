@@ -15,6 +15,7 @@ use App\Models\WorkHoursOT;
 use App\Models\positionassign;
 use App\Models\position;
 use App\Models\Advance;
+use App\Models\Salery;
 
 class PayrollController extends Controller
 {
@@ -51,8 +52,10 @@ class PayrollController extends Controller
 
     public function PayrollEmpSaleryCal($Id) {
 
+        $salery = new Salery();
+        $now = Carbon::now()->format('M');
         $endmonth = Carbon::now()->endOfMonth()->toDateString();
-        $nowdate = Carbon::now()->endOfMonth()->toDateString(); //Carbon::now()->toDateString();
+        $nowdate = Carbon::now()->toDateString(); //Carbon::now()->toDateString();
 
         if($endmonth == $nowdate)
         {
@@ -136,24 +139,42 @@ class PayrollController extends Controller
             $finalsalery = $finalsalery - $EPF;
 
             // condition checking for allowance
-            $now = Carbon::now()->format('M');
+
             if($absantcount == 0)
             {
                 $finalsalery + 3000;
+                $salery->allcome = 3000;
             }
             elseif($now == 'Apr')
             {
                 $finalsalery + 4000;
+                $salery->newyear = 4000;
             }
             elseif($now == 'Dec')
             {
                 $finalsalery + 4000;
+                $salery->chrismas = 4000;
             }
 
-            dd($finalsalery);
+            //adding data to salery db
+            $salery->empId = $Id;
+            $salery->month = $now;
+            $salery->present = $presentcount;
+            $salery->leave = $leavecount;
+            $salery->short = $shortcount;
+            $salery->absant = $absantcount;
+            $salery->othours = $othourscount;
+            $salery->normalhours = $nhourscount;
+            $salery->advance = $advancefinal;
+            $salery->basic = $basic;
+            $salery->normalsal = $normalsalery;
+            $salery->otsal = $overtimesalery;
+            $salery->absal = $absantdeduction;
+            $salery->epf = $EPF;
+            $salery->finalsal = $finalsalery;
+            $salery->save();
 
-
-            // return view('adminn.admin_salerycal');
+            return back()->with('status', 'Employee Salery is Calculated');
         }
         else
         {

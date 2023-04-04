@@ -7,5 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salery extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'empId',
+        'month',
+        'present',
+        'leave',
+        'short',
+        'absant',
+        'othours',
+        'normalhours',
+        'advance',
+        'basic',
+        'normalsal',
+        'otsal',
+        'absal',
+        'epf',
+        'newyear',
+        'chrismas',
+        'allcome',
+        'finalsal'
+    ];
 }
