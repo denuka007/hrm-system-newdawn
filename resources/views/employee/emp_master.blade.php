@@ -102,7 +102,7 @@
         Swal.fire(
         'SUCCESS',
         '{{ session::get('status') }}',
-        'question'
+        'success'
         )
     </script>
     @endif

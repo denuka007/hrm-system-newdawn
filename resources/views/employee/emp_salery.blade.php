@@ -60,7 +60,7 @@
                                         <span class="d-block mb-1 d-flex justify-content-center">Request Advance</span>
                                         <h3 class="card-title mb-2 d-flex justify-content-center">Limit: 5000</h3>
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-info btn-rounded btn-sm">Request</a>
+                                            <a href="{{route('emp.advancereq', Auth::user()->empId)}}" class="btn btn-info btn-rounded btn-sm">Request</a>
                                         </div>
                                     </div>
                                 </div>

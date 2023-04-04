@@ -73,6 +73,17 @@
         </script>
     @endif
 
+    @if (Session::has('error'))
+        <script>
+            swal({
+                title: "Error",
+                text: "{{ session::get('error') }}",
+                icon: "error",
+                button: "Ok",
+            });
+        </script>
+    @endif
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");

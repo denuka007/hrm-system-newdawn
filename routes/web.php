@@ -11,6 +11,7 @@ use App\Http\Controllers\ManagerControllers\OverTimeController;
 use App\Http\Controllers\EmployeeControllers\EmpattendanceController;
 use App\Http\Controllers\EmployeeControllers\InboxController;
 use App\Http\Controllers\EmployeeControllers\SaleryController;
+use App\Http\Controllers\AdminControllers\PayrollController;
 use App\Models\User;
 
 /*
@@ -33,6 +34,15 @@ Route::prefix('admin')->group(function (){
     Route::get('/dashboard',[AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
     Route::get('/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
     Route::get('/profile',[AdminController::class, 'AdminProfile'])->name('admin.profile');
+    //payroll
+    Route::get('/payroll',[PayrollController::class, 'PayrollView'])->name('admin.payroll');
+    Route::get('/payroll/payrollmanagement',[PayrollController::class, 'PayrollManagement'])->name('admin.payrollmanagement');
+    Route::get('/payroll/payrollmanagement/basicmanage',[PayrollController::class, 'PayrollBasicManage'])->name('admin.basicandadvance');
+    Route::get('/payroll/payrollmanagement/otherscales',[PayrollController::class, 'PayrollOtherScales'])->name('admin.otherscales');
+    Route::get('/payroll/payrollcalculation',[PayrollController::class, 'PayrollCalculation'])->name('admin.calculation');
+    //calculations
+    Route::get('/payroll/payrollcalculation/empsalery/{Id}',[PayrollController::class, 'PayrollEmpSaleryCal'])->name('admin.empsal');
+
     //Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');
     //Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');
 
@@ -134,7 +144,10 @@ Route::get('/inbox', [InboxController::class, 'InboxView'])->middleware(['auth',
 Route::get('/attendance/shortleave/{Id}', [EmpattendanceController::class, 'ShortLeave'])->middleware(['auth', 'verified'])->name('emp.shortleave');
 Route::get('/inbox/clearall', [InboxController::class, 'ClearAll'])->middleware(['auth', 'verified'])->name('emp.clearall');
 Route::get('/attendance/clearleave/{Id}', [EmpattendanceController::class, 'ClearLeave'])->middleware(['auth', 'verified'])->name('emp.leavecancel');
+//salery
 Route::get('/salery', [SaleryController::class, 'SaleryView'])->middleware(['auth', 'verified'])->name('emp.saleryview');
+Route::get('/salery/advance/{Id}', [SaleryController::class, 'AdvanceReq'])->middleware(['auth', 'verified'])->name('emp.advancereq');
+
 
 /* ------- End of User Routes -------  */
 

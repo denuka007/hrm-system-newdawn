@@ -35,7 +35,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="{{route('admin.payroll')}}">
                     <i class="align-middle" data-feather="dollar-sign"></i> <span class="align-middle">PayRoll Management</span>
                 </a>
             </li>
