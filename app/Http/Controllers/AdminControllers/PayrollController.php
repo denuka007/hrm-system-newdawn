@@ -16,6 +16,7 @@ use App\Models\positionassign;
 use App\Models\position;
 use App\Models\Advance;
 use App\Models\Salery;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PayrollController extends Controller
 {
@@ -26,20 +27,9 @@ class PayrollController extends Controller
 
     public function PayrollManagement() {
 
-        return view('adminn.admin_payrollmanage');
-    }
-
-    public function PayrollBasicManage() {
-
-        $basic = BasicAdvanceRates::all();
-        return view('adminn.admin_basicandadvance', compact('basic'));
-    }
-
-    public function PayrollOtherScales() {
-
-        $smonths = SpecialMonthsRates::all();
-        $orates = OtherRates::all();
-        return view('adminn.admin_otherscales', compact('smonths', 'orates'));
+        $bdata = BasicAdvanceRates::all();
+        $odata = OtherRates::all();
+        return view('adminn.admin_payrollmanage',compact('bdata','odata'));
     }
 
     public function PayrollCalculation() {
@@ -90,9 +80,20 @@ class PayrollController extends Controller
             ->whereMonth('created_at', Carbon::now()->month)
             ->sum('othours');
 
+            //getting employee name
+            $userdata = User::where('empId', $Id)->get('name');
+            foreach($userdata as $userdata)
+            $name = $userdata->name;
+
+            //getting position id
             $positionid = positionassign::where('empId',$Id)->get('posid');
             foreach($positionid as $positionid)
             $posid = $positionid->posid; //final
+
+            //geting position name
+            $posdata = position::where('posid', $posid)->get('posname');
+            foreach($posdata as $posdata)
+            $posname = $posdata->posname;
 
             //getting advance get or not
             $advance = Advance::where('empId', $Id)->get('status');
@@ -145,15 +146,29 @@ class PayrollController extends Controller
                 $finalsalery + 3000;
                 $salery->allcome = 3000;
             }
-            elseif($now == 'Apr')
+            else
+            {
+                $finalsalery + 0;
+            }
+
+            if($now == 'Apr')
             {
                 $finalsalery + 4000;
                 $salery->newyear = 4000;
             }
-            elseif($now == 'Dec')
+            else
+            {
+                $finalsalery + 0;
+            }
+
+            if($now == 'Dec')
             {
                 $finalsalery + 4000;
                 $salery->chrismas = 4000;
+            }
+            else
+            {
+                $finalsalery + 0;
             }
 
             //adding data to salery db
@@ -172,6 +187,9 @@ class PayrollController extends Controller
             $salery->absal = $absantdeduction;
             $salery->epf = $EPF;
             $salery->finalsal = $finalsalery;
+            $salery->date = $nowdate;
+            $salery->position = $posname;
+            $salery->name = $name;
             $salery->save();
 
             return back()->with('status', 'Employee Salery is Calculated');
@@ -180,6 +198,30 @@ class PayrollController extends Controller
         {
             return back()->with('error', 'Today is Not End of the Month');
         }
+    }
+
+    public function SaleryHistory() {
+
+        return view('adminn.admin_salhistory');
+    }
+
+    public function SaleryHistoryView($Id) {
+
+        $data = Salery::where('month', $Id)->get();
+        return view('adminn.admin_salhistoryview', compact('data'));
+    }
+
+    public function SingleSaleryView($Id) {
+
+        $data = Salery::where('empId', $Id)->get();
+        return view('adminn.admin_singlesalview',compact('data'));
+    }
+
+    public function ReportDownload() {
+
+        $sals = Salery::all();
+        $pdf = Pdf::loadView('adminn.pdf.salery',['sals'=>$sals])->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('saleryreport.pdf');
     }
 
 }

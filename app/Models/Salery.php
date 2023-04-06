@@ -25,6 +25,10 @@ class Salery extends Model
         'newyear',
         'chrismas',
         'allcome',
-        'finalsal'
+        'finalsal',
+        'name',
+        'position',
+        'date',
+        'status'
     ];
 }

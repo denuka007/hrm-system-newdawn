@@ -1,23 +1,6 @@
 @extends('adminn.admin_master')
 
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <div class="card align-items-center">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Manage Salery Scales</h5>
-            </div>
-            <div class="card-body">
-                <a href="{{route('admin.basicandadvance')}}">
-                    <button type="button" class="btn btn-primary btn-lg">Basic Salery and Advance</button>
-                </a>
-                <a href="{{route('admin.otherscales')}}">
-                    <button type="button" class="btn btn-info btn-lg">Other Salery Scales</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-12">
@@ -35,27 +18,19 @@
                                   <th scope="col">#</th>
                                   <th scope="col">Position</th>
                                   <th scope="col">Basic Salery</th>
-
+                                  <th scope="col">Advance Limit</th>
                                 </tr>
                               </thead>
+                              @foreach ($bdata as $bdata)
                               <tbody>
                                 <tr>
-                                  <th scope="row">1</th>
-                                  <td>Designer</td>
-                                  <td>Rs. 20000</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Qualitiy Checker</td>
-                                  <td>Rs. 18000</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Tailor</td>
-                                  <td>Rs. 16000</td>
+                                  <th scope="row">{{$bdata->id}}</th>
+                                  <td>{{$bdata->position}}</td>
+                                  <td>Rs. {{$bdata->basic}}</td>
+                                  <td>Rs. {{$bdata->advancelimit}}</td>
                                 </tr>
                               </tbody>
-
+                              @endforeach
                             </table>
                           </div>
                     </div>
@@ -69,24 +44,15 @@
                                   <th scope="col">Rate</th>
                                 </tr>
                               </thead>
+                              @foreach ($odata as $odata)
                               <tbody>
                                 <tr>
-                                  <th scope="row">1</th>
-                                  <td>Bonus</td>
-                                  <td>Not this month</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>All Day working</td>
-                                  <td>Rs. 3000</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>OT hours</td>
-                                  <td>Rs. 120</td>
+                                  <th scope="row">{{$odata->id}}</th>
+                                  <td>{{$odata->title}}</td>
+                                  <td>Rs. {{$odata->rate}}</td>
                                 </tr>
                               </tbody>
-
+                              @endforeach
                             </table>
                           </div>
                     </div>

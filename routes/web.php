@@ -42,6 +42,11 @@ Route::prefix('admin')->group(function (){
     Route::get('/payroll/payrollcalculation',[PayrollController::class, 'PayrollCalculation'])->name('admin.calculation');
     //calculations
     Route::get('/payroll/payrollcalculation/empsalery/{Id}',[PayrollController::class, 'PayrollEmpSaleryCal'])->name('admin.empsal');
+    Route::get('/payroll/payrollcalculation/history',[PayrollController::class, 'SaleryHistory'])->name('admin.salhistory');
+    Route::get('/payroll/payrollcalculation/history/view/{Id}',[PayrollController::class, 'SaleryHistoryView'])->name('admin.historyview');
+    Route::get('/payroll/payrollcalculation/history/Single/{Id}',[PayrollController::class, 'SingleSaleryView'])->name('admin.singlesalview');
+    //payroll download
+    Route::get('/payroll/payrollcalculation/pdf',[PayrollController::class, 'ReportDownload'])->name('admin.reportpdf');
 
     //Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');
     //Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');
@@ -147,6 +152,7 @@ Route::get('/attendance/clearleave/{Id}', [EmpattendanceController::class, 'Clea
 //salery
 Route::get('/salery', [SaleryController::class, 'SaleryView'])->middleware(['auth', 'verified'])->name('emp.saleryview');
 Route::get('/salery/advance/{Id}', [SaleryController::class, 'AdvanceReq'])->middleware(['auth', 'verified'])->name('emp.advancereq');
+
 
 
 /* ------- End of User Routes -------  */

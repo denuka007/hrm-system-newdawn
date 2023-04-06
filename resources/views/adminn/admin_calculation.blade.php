@@ -16,11 +16,12 @@
                                 <div class="card-title d-flex align-items-start justify-content-center">
                                     <i class="menu-icon tf-icons bx bx-user-check"></i>
                                 </div>
-                                <span class="d-block mb-1 d-flex justify-content-center">Download Current Salery Report</span>
+                                <span class="d-block mb-1 d-flex justify-content-center">Salery Report Download</span>
 
                                 <div class="d-flex justify-content-center">
-                                    <button type="button"
-                                        class="btn btn-primary btn-rounded btn-sm">DOWNLOAD NOW</button>
+                                        <a href="{{route('admin.reportpdf')}}" class="btn btn-primary btn-rounded btn-sm me-3">Download</a>
+                                        <button type="button"
+                                        class="btn btn-info btn-rounded btn-sm">Notify</button>
                                 </div>
                             </div>
                         </div>
@@ -48,8 +49,7 @@
                                 </div>
                                 <span class="d-block mb-1 d-flex justify-content-center">Salery History</span>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button"
-                                        class="btn btn-info btn-rounded btn-sm">View History</button>
+                                    <a href="{{route('admin.salhistory')}}" class="btn btn-warning btn-rounded btn-sm">VIEW HISTORY</a>
                                 </div>
                             </div>
                         </div>
