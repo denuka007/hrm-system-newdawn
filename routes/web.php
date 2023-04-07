@@ -12,6 +12,7 @@ use App\Http\Controllers\EmployeeControllers\EmpattendanceController;
 use App\Http\Controllers\EmployeeControllers\InboxController;
 use App\Http\Controllers\EmployeeControllers\SaleryController;
 use App\Http\Controllers\AdminControllers\PayrollController;
+use App\Http\Controllers\AdminControllers\AdminEmployeeController;
 use App\Models\User;
 
 /*
@@ -40,6 +41,9 @@ Route::prefix('admin')->group(function (){
     Route::get('/payroll/payrollmanagement/basicmanage',[PayrollController::class, 'PayrollBasicManage'])->name('admin.basicandadvance');
     Route::get('/payroll/payrollmanagement/otherscales',[PayrollController::class, 'PayrollOtherScales'])->name('admin.otherscales');
     Route::get('/payroll/payrollcalculation',[PayrollController::class, 'PayrollCalculation'])->name('admin.calculation');
+    Route::get('/payroll/advancereq',[PayrollController::class, 'AdvanceReq'])->name('admin.advancereq');
+    Route::get('/payroll/advancereq/accept/{Id}',[PayrollController::class, 'AdvanceReqAccept'])->name('admin.adaccept');
+    Route::get('/payroll/advancereq/reject/{Id}',[PayrollController::class, 'AdvanceReqReject'])->name('admin.adreject');
     //calculations
     Route::get('/payroll/payrollcalculation/empsalery/{Id}',[PayrollController::class, 'PayrollEmpSaleryCal'])->name('admin.empsal');
     Route::get('/payroll/payrollcalculation/history',[PayrollController::class, 'SaleryHistory'])->name('admin.salhistory');
@@ -47,6 +51,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/payroll/payrollcalculation/history/Single/{Id}',[PayrollController::class, 'SingleSaleryView'])->name('admin.singlesalview');
     //payroll download
     Route::get('/payroll/payrollcalculation/pdf',[PayrollController::class, 'ReportDownload'])->name('admin.reportpdf');
+    //Employee Management
+    Route::get('/Employee',[AdminEmployeeController::class, 'EmpView'])->name('admin.employee');
 
     //Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');
     //Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');

@@ -17,7 +17,7 @@
 
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="{{route('admin.employee')}}">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Employee Management</span>
                 </a>
             </li>

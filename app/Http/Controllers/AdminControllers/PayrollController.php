@@ -16,13 +16,15 @@ use App\Models\positionassign;
 use App\Models\position;
 use App\Models\Advance;
 use App\Models\Salery;
+use App\Models\EmpInbox;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class PayrollController extends Controller
 {
     public function PayrollView() {
 
-        return view('adminn.admin_payroll');
+        $info = Salery::all();
+        return view('adminn.admin_payroll', compact('info'));
     }
 
     public function PayrollManagement() {
@@ -36,6 +38,48 @@ class PayrollController extends Controller
 
         $emp = User::all();
         return view('adminn.admin_calculation', compact('emp'));
+    }
+
+    public function AdvanceReq() {
+
+        $ad = Advance::all();
+        return view('adminn.admin_adreq', compact('ad'));
+    }
+
+    public function AdvanceReqAccept($Id) {
+
+        $adstate = Advance::find($Id);
+        $adstate->increment('status', 1);
+
+        $id = Advance::where('id',$Id)->get('empId');
+        foreach($id as $id)
+        $empid = $id->empId;
+
+        $msg = new EmpInbox();
+        $msg->empId = $empid;
+        $msg->msg = 'Your Advance is accepted by admin check your bank balance';
+        $msg->type = 2;
+        $msg->save();
+
+        return back()->with('status', 'Advance Request Accepted');
+    }
+
+    public function AdvanceReqReject($Id) {
+
+        $id = Advance::where('id',$Id)->get('empId');
+        foreach($id as $id)
+        $empid = $id->empId;
+
+        $msg = new EmpInbox();
+        $msg->empId = $empid;
+        $msg->msg = 'Your Advance is Rejected';
+        $msg->type = 1;
+        $msg->save();
+
+        $adrejct = Advance::find($Id);
+        $adrejct->delete();
+
+        return back()->with('status', 'Advance Request Rejected');
     }
 
     //Calculation Proccess Nowon !!!!
@@ -207,8 +251,16 @@ class PayrollController extends Controller
 
     public function SaleryHistoryView($Id) {
 
-        $data = Salery::where('month', $Id)->get();
-        return view('adminn.admin_salhistoryview', compact('data'));
+        if(Salery::where('month', $Id)->exists())
+        {
+             $data = Salery::where('month', $Id)->get();
+             return view('adminn.admin_salhistoryview', compact('data'));
+        }
+        else
+        {
+            return back()->with('error', 'No Data Available in This month');
+        }
+
     }
 
     public function SingleSaleryView($Id) {

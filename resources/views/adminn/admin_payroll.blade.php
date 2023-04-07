@@ -92,7 +92,7 @@
 
 
                                 <div class="mb-0">
-                                    <a href="#" class="btn btn-warning btn-rounded">View Requests</a>
+                                    <a href="{{route('admin.advancereq')}}" class="btn btn-warning btn-rounded">View Requests</a>
                                 </div>
                             </div>
                         </div>
@@ -120,119 +120,31 @@
                         <th>Action</th>
                       </tr>
                     </thead>
+                    @foreach ($info as $info)
                     <tbody>
                       <tr>
                         <td>
                           <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                class="rounded-circle"
-                                />
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">John Doe</p>
-                              <p class="text-muted mb-0">john.doe@gmail.com</p>
+                              <p class="fw-bold mb-1">{{$info->name}}</p>
+                              <p class="text-muted mb-0">Rs. {{$info->basic}}</p>
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p class="fw-normal mb-1">Designer</p>
+                          <p class="fw-normal mb-1">{{$info->position}}</p>
                         </td>
                         <td>
-                          March
+                          {{$info->month}}
                         </td>
-                        <td>Rs. 43000/=</td>
+                        <td>{{$info->finalsal}}</td>
                         <td>
                           <button type="button" class="btn btn-primary btn-sm">
                             View
                           </button>
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                class="rounded-circle"
-                                />
-                            <div class="ms-3">
-                              <p class="fw-bold mb-1">John Doe</p>
-                              <p class="text-muted mb-0">john.doe@gmail.com</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-normal mb-1">Designer</p>
-                        </td>
-                        <td>
-                          March
-                        </td>
-                        <td>Rs. 43000/=</td>
-                        <td>
-                          <button type="button" class="btn btn-primary btn-sm">
-                            View
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                class="rounded-circle"
-                                />
-                            <div class="ms-3">
-                              <p class="fw-bold mb-1">John Doe</p>
-                              <p class="text-muted mb-0">john.doe@gmail.com</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-normal mb-1">Designer</p>
-                        </td>
-                        <td>
-                          March
-                        </td>
-                        <td>Rs. 43000/=</td>
-                        <td>
-                          <button type="button" class="btn btn-primary btn-sm">
-                            View
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                class="rounded-circle"
-                                />
-                            <div class="ms-3">
-                              <p class="fw-bold mb-1">John Doe</p>
-                              <p class="text-muted mb-0">john.doe@gmail.com</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-normal mb-1">Designer</p>
-                        </td>
-                        <td>
-                          March
-                        </td>
-                        <td>Rs. 43000/=</td>
-                        <td>
-                          <button type="button" class="btn btn-primary btn-sm">
-                            View
-                          </button>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
             </div>
