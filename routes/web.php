@@ -13,6 +13,8 @@ use App\Http\Controllers\EmployeeControllers\InboxController;
 use App\Http\Controllers\EmployeeControllers\SaleryController;
 use App\Http\Controllers\AdminControllers\PayrollController;
 use App\Http\Controllers\AdminControllers\AdminEmployeeController;
+use App\Http\Controllers\AdminControllers\ProjectandClientController;
+use App\Http\Controllers\PerfomanceController;
 use App\Models\User;
 
 /*
@@ -53,6 +55,23 @@ Route::prefix('admin')->group(function (){
     Route::get('/payroll/payrollcalculation/pdf',[PayrollController::class, 'ReportDownload'])->name('admin.reportpdf');
     //Employee Management
     Route::get('/Employee',[AdminEmployeeController::class, 'EmpView'])->name('admin.employee');
+    //project and client management
+    Route::get('/projects',[ProjectandClientController::class, 'ProjectView'])->name('admin.projectsandclient');
+    Route::get('/projects/clientadd',[ProjectandClientController::class, 'ClientAdd'])->name('admin.clientadd');
+    Route::post('/projects/clientadd/done',[ProjectandClientController::class, 'ClientAddDone'])->name('admin.clientdone');
+    Route::get('/projects/projectadd',[ProjectandClientController::class, 'ProjectAdd'])->name('admin.projectadd');
+    Route::post('/projects/projectadd/done',[ProjectandClientController::class, 'ProjectAddDone'])->name('admin.projectdone');
+    Route::get('/projects/clientview/{Id}',[ProjectandClientController::class, 'ClientView'])->name('admin.clientview');
+
+    //PERFOMANCE
+    Route::get('/perfomance',[PerfomanceController::class, 'PerfomanceView'])->name('admin.perfomance');
+    Route::get('/perfomance/individual',[PerfomanceController::class, 'PerfomanceIndividual'])->name('admin.individualperfomance');
+    Route::get('/perfomance/compare',[PerfomanceController::class, 'PerfomanceCompare'])->name('admin.perfomancecompare');
+    Route::get('/perfomance/individual/months/{Id}',[PerfomanceController::class, 'PerfomanceAttendance'])->name('admin.attenperfomace');
+    Route::get('/perfomance/individual/months/attendance/{Id}/{Month}',[PerfomanceController::class, 'AttendanceGet'])->name('admin.getattendance');
+
+
+
 
     //Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');
     //Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');

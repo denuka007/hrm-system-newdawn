@@ -127,7 +127,7 @@
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
                               <p class="fw-bold mb-1">{{$info->name}}</p>
-                              <p class="text-muted mb-0">Rs. {{$info->basic}}</p>
+                              <p class="text-muted mb-0">Basic - {{$info->basic}}</p>
                             </div>
                           </div>
                         </td>
@@ -137,7 +137,7 @@
                         <td>
                           {{$info->month}}
                         </td>
-                        <td>{{$info->finalsal}}</td>
+                        <td>Rs. {{$info->finalsal}}</td>
                         <td>
                           <button type="button" class="btn btn-primary btn-sm">
                             View

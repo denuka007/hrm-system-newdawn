@@ -41,7 +41,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
+                <a class="sidebar-link" href="{{route('admin.projectsandclient')}}">
                     <i class="align-middle" data-feather="package"></i> <span class="align-middle">Projects and Clients</span>
                 </a>
             </li>
@@ -51,7 +51,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="ui-buttons.html">
+                <a class="sidebar-link" href="{{route('admin.perfomance')}}">
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Perfomance</span>
                 </a>
             </li>
