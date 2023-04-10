@@ -9,6 +9,7 @@ use App\Models\AttendanceLog;
 use App\Models\AttendanceMemory;
 use App\Models\AbsantMemory;
 use App\Models\WorkHoursOT;
+use App\Models\OtMemory;
 
 class PerfomanceController extends Controller
 {
@@ -98,8 +99,13 @@ class PerfomanceController extends Controller
         ->whereMonth('created_at', $Month)
         ->sum('othours');
 
-        //dd($othours);
+        //getting presentage
 
-        return view('adminn.admin_otview');
+
+        $otlog = OtMemory::where('empId',$Id)
+        ->whereMonth('created_at', $Month)
+        ->get();
+
+        return view('adminn.admin_otview', compact('otlog', 'othours'));
     }
 }
