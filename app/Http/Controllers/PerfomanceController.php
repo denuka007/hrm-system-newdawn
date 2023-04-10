@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\AttendanceLog;
+use App\Models\AttendanceMemory;
+use App\Models\AbsantMemory;
+use App\Models\WorkHoursOT;
 
 class PerfomanceController extends Controller
 {
@@ -33,7 +38,68 @@ class PerfomanceController extends Controller
     public function AttendanceGet($Id, $Month) {
 
         $presentdates = AttendanceLog::where('emp_Id',$Id)
-        ->whereMonth('created_at', Carbon::now()->month)
+        ->whereMonth('created_at', $Month)
         ->sum('present');
+
+        $absantdates = AttendanceLog::where('emp_Id',$Id)
+        ->whereMonth('created_at', $Month)
+        ->sum('absant');
+
+        //Calculate present presentage
+        $present = $presentdates / 26 * 100;
+        $pre = (integer)$present;
+
+        //Calculate present presentage
+        $absant = $absantdates / 4 * 100;
+        $ab = (integer)$absant;
+
+        $status = '';
+
+        //getting status
+        if($pre == 100)
+        {
+            $status = 'Excellent';
+        }
+        elseif($pre >= 75)
+        {
+            $status = 'Good';
+        }
+        elseif($pre >= 50)
+        {
+            $status = 'Normal';
+        }
+        elseif($pre >= 25)
+        {
+            $status = 'Poor';
+        }
+
+        $attenlog = AttendanceMemory::where('empId',$Id)
+        ->whereMonth('created_at', $Month)
+        ->get();
+
+        $absantlog = AbsantMemory::where('empId',$Id)
+        ->whereMonth('created_at', $Month)
+        ->get();
+
+
+        return view('adminn.admin_attenview', compact('attenlog','absantlog','pre','ab','status'));
+
+    }
+
+    public function PerfomanceOvertime($Id) {
+
+        $empid = $Id;
+        return view('adminn.admin_monthovertime', compact('empid'));
+    }
+
+    public function OvertimeGet($Id, $Month) {
+
+        $othours = WorkHoursOT::where('empId',$Id)
+        ->whereMonth('created_at', $Month)
+        ->sum('othours');
+
+        //dd($othours);
+
+        return view('adminn.admin_otview');
     }
 }

@@ -21,7 +21,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'1'])}}" class="btn btn-primary btn-rounded btn-sm" class="btn btn-primary btn-rounded btn-sm">January</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'1'])}}" class="btn btn-primary btn-rounded btn-sm" class="btn btn-primary btn-rounded btn-sm">January</a>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'2'])}}" class="btn btn-primary btn-rounded btn-sm" class="btn btn-primary btn-rounded btn-sm">February</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'2'])}}" class="btn btn-primary btn-rounded btn-sm" class="btn btn-primary btn-rounded btn-sm">February</a>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'3'])}}" class="btn btn-primary btn-rounded btn-sm" class="btn btn-primary btn-rounded btn-sm">March</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'3'])}}" class="btn btn-primary btn-rounded btn-sm" class="btn btn-primary btn-rounded btn-sm">March</a>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'4'])}}" class="btn btn-primary btn-rounded btn-sm">April</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'4'])}}" class="btn btn-primary btn-rounded btn-sm">April</a>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'5'])}}" class="btn btn-primary btn-rounded btn-sm">May</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'5'])}}" class="btn btn-primary btn-rounded btn-sm">May</a>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'6'])}}" class="btn btn-primary btn-rounded btn-sm">June</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'6'])}}" class="btn btn-primary btn-rounded btn-sm">June</a>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'7'])}}" class="btn btn-primary btn-rounded btn-sm">July</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'7'])}}" class="btn btn-primary btn-rounded btn-sm">July</a>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'8'])}}" class="btn btn-primary btn-rounded btn-sm">August</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'8'])}}" class="btn btn-primary btn-rounded btn-sm">August</a>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'9'])}}" class="btn btn-primary btn-rounded btn-sm">September</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'9'])}}" class="btn btn-primary btn-rounded btn-sm">September</a>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'10'])}}" class="btn btn-primary btn-rounded btn-sm">October</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'10'])}}" class="btn btn-primary btn-rounded btn-sm">October</a>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +192,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'11'])}}" class="btn btn-primary btn-rounded btn-sm">November</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'11'])}}" class="btn btn-primary btn-rounded btn-sm">November</a>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +208,7 @@
                                 </h3>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('admin.getattendance', [$empid,'12'])}}" class="btn btn-primary btn-rounded btn-sm">December</a>
+                                    <a href="{{route('admin.getovertime', [$empid,'12'])}}" class="btn btn-primary btn-rounded btn-sm">December</a>
                                 </div>
                             </div>
                         </div>

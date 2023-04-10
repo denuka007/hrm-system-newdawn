@@ -69,6 +69,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/perfomance/compare',[PerfomanceController::class, 'PerfomanceCompare'])->name('admin.perfomancecompare');
     Route::get('/perfomance/individual/months/{Id}',[PerfomanceController::class, 'PerfomanceAttendance'])->name('admin.attenperfomace');
     Route::get('/perfomance/individual/months/attendance/{Id}/{Month}',[PerfomanceController::class, 'AttendanceGet'])->name('admin.getattendance');
+    Route::get('/perfomance/individual/overtime/months/{Id}',[PerfomanceController::class, 'PerfomanceOvertime'])->name('admin.overperfomance');
+    Route::get('/perfomance/individual/overtime/months/{Id}/{Month}',[PerfomanceController::class, 'OvertimeGet'])->name('admin.getovertime');
 
 
 

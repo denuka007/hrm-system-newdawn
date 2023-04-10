@@ -14,7 +14,7 @@
                             <th>Name</th>
                             <th class="text-center">Attendance</th>
                             <th class="text-center">OverTime</th>
-                            <th class="text-center">Salery</th>
+
                             <th class="text-center">Productivity</th>
                           </tr>
                         </thead>
@@ -39,10 +39,7 @@
                                 <a href="{{route('admin.attenperfomace', $emps->empId)}}" class="btn btn-primary btn-sm">View</a>
                             </td>
                             <td class="text-center">
-                                <a href="" class="btn btn-success btn-sm">View</a>
-                            </td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm">View</a>
+                                <a href="{{route('admin.overperfomance', $emps->empId)}}" class="btn btn-success btn-sm">View</a>
                             </td>
                             <td class="text-center">
                                 <a href="" class="btn btn-info btn-sm">View</a>

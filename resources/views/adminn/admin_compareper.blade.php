@@ -8,31 +8,48 @@
                 <h5 class="card-title mb-0">Select Employee</h5>
             </div>
             <div class="card-body">
-                <div class="row">
+                <table class="table align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                      <tr>
+                        <th>Name</th>
+                        <th class="text-center">Attendance</th>
+                        <th class="text-center">OverTime</th>
+                        <th class="text-center">Productivity</th>
+                      </tr>
+                    </thead>
                     @foreach ($emps as $emps)
-                    <div class="col-4">
-                        <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-4">
-                                <div class="d-flex text-black">
-                                    <div class="flex-shrink-0">
-                                        <img src="{{ asset('assets/uploads/' . $emps->propic) }}"
-                                            alt="Generic placeholder image" class="img-fluid"
-                                            style="width: 100px; border-radius: 10px;">
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h4 class="mb-1">{{$emps->name}}</h4>
-                                        <p class="mb-2 pb-1" style="color: #2b2a2a;">{{$emps->position}}</p>
-                                        <div class="d-flex pt-1">
-                                            <button type="button"
-                                                class="btn btn-outline-primary btn-sm me-1 flex-grow-1">View</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img
+                                src="{{ asset('assets/uploads/' . $emps->propic) }}"
+                                alt=""
+                                style="width: 45px; height: 45px"
+                                class="rounded-circle"
+                                />
+                            <div class="ms-3">
+                              <p class="fw-bold mb-1">{{$emps->name}}</p>
+                              <p class="text-muted mb-0">{{$emps->empId}}</p>
                             </div>
-                        </div>
-                    </div>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-primary btn-sm">View</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-success btn-sm">View</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-warning btn-sm">View</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-info btn-sm">View</a>
+                        </td>
+                      </tr>
+                    </tbody>
                     @endforeach
-                </div>
+                  </table>
             </div>
         </div>
     </div>
