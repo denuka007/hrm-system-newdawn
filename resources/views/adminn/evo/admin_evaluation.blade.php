@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Quick Access</h5>
+                <h5 class="card-title mb-0">Evaluation</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -14,19 +14,19 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col mt-0 ">
-                                        <h5 class="card-title ">Individual Employee Status</h5>
+                                        <h5 class="card-title ">Term and Conditions</h5>
                                     </div>
 
                                     <div class="col-auto">
                                         <div class="stat text-primary">
-                                            <i class="align-middle" data-feather="slack"></i>
+                                            <i class="align-middle" data-feather="info"></i>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="mb-0">
-                                    <a href="{{route('admin.individualperfomance')}}" class="btn btn-primary btn-rounded">VIEW</a>
+                                    <a href="" class="btn btn-primary btn-rounded">VIEW</a>
                                 </div>
                             </div>
                         </div>
@@ -36,19 +36,19 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col mt-0">
-                                        <h5 class="card-title">Perfomancee comparison</h5>
+                                        <h5 class="card-title">Evaluation</h5>
                                     </div>
 
                                     <div class="col-auto">
                                         <div class="stat text-primary">
-                                            <i class="align-middle" data-feather="doller-sign"></i>
+                                            <i class="align-middle" data-feather="sliders"></i>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="mb-0">
-                                    <a href="{{route('admin.perfomancecompare')}}" class="btn btn-success btn-rounded">View</a>
+                                    <a href="" class="btn btn-success btn-rounded">Go</a>
                                 </div>
                             </div>
                         </div>
@@ -58,36 +58,24 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col mt-0">
-                                        <h5 class="card-title">Perfomance Evaluation</h5>
+                                        <h5 class="card-title">History</h5>
                                     </div>
 
                                     <div class="col-auto">
                                         <div class="stat text-primary">
-                                            <i class="align-middle" data-feather="users"></i>
+                                            <i class="align-middle" data-feather="clock"></i>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="mb-0">
-                                    <a href="{{route('admin.perevaluation')}}" class="btn btn-info btn-rounded">VIEW</a>
+                                    <a href="" class="btn btn-info btn-rounded">VIEW</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Top 5 Perfomarce on Pervious Month</h5>
-            </div>
-            <div class="card-body">
             </div>
         </div>
     </div>

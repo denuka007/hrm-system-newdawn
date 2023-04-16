@@ -57,13 +57,13 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="ui-forms.html">
+                <a class="sidebar-link" href="{{route('admin.loyalpoint')}}">
                     <i class="align-middle" data-feather="star"></i> <span class="align-middle">Loyalty Points</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="icons-feather.html">
+                <a class="sidebar-link" href="{{route('admin.production')}}">
                     <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Production</span>
                 </a>
             </li>

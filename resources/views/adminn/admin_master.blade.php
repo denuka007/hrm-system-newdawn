@@ -65,7 +65,7 @@
     @if (Session::has('msg'))
         <script>
             swal({
-                title: "Welcome",
+                title: "Success",
                 text: "{{ session::get('msg') }}",
                 icon: "success",
                 button: "Ok",

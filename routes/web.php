@@ -14,7 +14,9 @@ use App\Http\Controllers\EmployeeControllers\SaleryController;
 use App\Http\Controllers\AdminControllers\PayrollController;
 use App\Http\Controllers\AdminControllers\AdminEmployeeController;
 use App\Http\Controllers\AdminControllers\ProjectandClientController;
+use App\Http\Controllers\AdminControllers\ProductionController;
 use App\Http\Controllers\PerfomanceController;
+use App\Http\Controllers\LoyaltyPointController;
 use App\Models\User;
 
 /*
@@ -63,6 +65,10 @@ Route::prefix('admin')->group(function (){
     Route::post('/projects/projectadd/done',[ProjectandClientController::class, 'ProjectAddDone'])->name('admin.projectdone');
     Route::get('/projects/clientview/{Id}',[ProjectandClientController::class, 'ClientView'])->name('admin.clientview');
 
+    //Production
+    Route::get('/production',[ProductionController::class, 'ProductionView'])->name('admin.production');
+    Route::post('/production/add/{Id}',[ProductionController::class, 'ProductionAdd'])->name('admin.prodctionadd');
+
     //PERFOMANCE
     Route::get('/perfomance',[PerfomanceController::class, 'PerfomanceView'])->name('admin.perfomance');
     Route::get('/perfomance/individual',[PerfomanceController::class, 'PerfomanceIndividual'])->name('admin.individualperfomance');
@@ -71,8 +77,20 @@ Route::prefix('admin')->group(function (){
     Route::get('/perfomance/individual/months/attendance/{Id}/{Month}',[PerfomanceController::class, 'AttendanceGet'])->name('admin.getattendance');
     Route::get('/perfomance/individual/overtime/months/{Id}',[PerfomanceController::class, 'PerfomanceOvertime'])->name('admin.overperfomance');
     Route::get('/perfomance/individual/overtime/months/{Id}/{Month}',[PerfomanceController::class, 'OvertimeGet'])->name('admin.getovertime');
+    Route::get('/perfomance/individual/productivity/months/{Id}',[PerfomanceController::class, 'PerfomanceProduct'])->name('admin.productperfomance');
+    Route::get('/perfomance/individual/productivity/months/{Id}/{Month}',[PerfomanceController::class, 'ProductGet'])->name('admin.getproductivity');
+    //Perfomance Compare
+    Route::get('/perfomance/compare/attendance/{Id}',[PerfomanceController::class, 'CompareAttendance'])->name('admin.attencompare');
+    Route::post('/perfomance/compare/attendance/emps/{Id}',[PerfomanceController::class, 'CompareAttenEmp'])->name('admin.compareemps');
+    Route::post('/perfomance/compare/attendance/months/{Id}',[PerfomanceController::class, 'CompareAttenMonths'])->name('admin.comparemonths');
+    Route::get('/perfomance/compare/overtime/{Id}',[PerfomanceController::class, 'CompareOvertime'])->name('admin.otcompare');
+    Route::get('/perfomance/compare/productivity/{Id}',[PerfomanceController::class, 'CompareProductivity'])->name('admin.productcompare');
+    Route::get('/perfomance/compare/Salery/{Id}',[PerfomanceController::class, 'CompareSalery'])->name('admin.salerycompare');
+    //Evaluation
+    Route::get('/perfomance/evaluation',[PerfomanceController::class, 'PerfomanceEvo'])->name('admin.perevaluation');
 
-
+    //Loyalty Points
+    Route::get('/loyaltypoint',[LoyaltyPointController::class, 'LoyalPointView'])->name('admin.loyalpoint');
 
 
     //Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');

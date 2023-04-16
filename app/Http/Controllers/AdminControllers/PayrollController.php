@@ -61,7 +61,7 @@ class PayrollController extends Controller
         $msg->type = 2;
         $msg->save();
 
-        return back()->with('status', 'Advance Request Accepted');
+        return back()->with('msg', 'Advance Request Accepted');
     }
 
     public function AdvanceReqReject($Id) {
@@ -79,7 +79,7 @@ class PayrollController extends Controller
         $adrejct = Advance::find($Id);
         $adrejct->delete();
 
-        return back()->with('status', 'Advance Request Rejected');
+        return back()->with('msg', 'Advance Request Rejected');
     }
 
     //Calculation Proccess Nowon !!!!
@@ -236,7 +236,7 @@ class PayrollController extends Controller
             $salery->name = $name;
             $salery->save();
 
-            return back()->with('status', 'Employee Salery is Calculated');
+            return back()->with('msg', 'Employee Salery is Calculated');
         }
         else
         {

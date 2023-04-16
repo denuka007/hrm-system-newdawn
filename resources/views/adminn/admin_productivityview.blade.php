@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Empty card</h5>
+                <h5 class="card-title mb-0">Quick View</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -21,7 +21,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col mt-0 ">
-                                                        <h5 class="card-title ">Total OT Hours</h5>
+                                                        <h5 class="card-title ">Target Count</h5>
                                                     </div>
 
                                                     <div class="col-auto">
@@ -33,7 +33,7 @@
 
 
                                                 <div class="mb-0">
-                                                    <h3 class="text-primary fw-bold">{{$othours}}</h3>
+                                                    <h3 class="text-primary fw-bold">{{$prodcount}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -43,7 +43,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col mt-0">
-                                                        <h5 class="card-title">Monthly OT Presentage</h5>
+                                                        <h5 class="card-title">Target Presentage</h5>
                                                     </div>
 
                                                     <div class="col-auto">
@@ -55,7 +55,7 @@
 
 
                                                 <div class="mb-0">
-                                                    <h3 class="text-primary fw-bold">{{$otp}}%</h3>
+                                                    <h3 class="text-primary fw-bold">{{$prodpre}}%</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col mt-0">
-                                                        <h5 class="card-title">Overroll Status</h5>
+                                                        <h5 class="card-title">Productivity Status</h5>
                                                     </div>
 
                                                     <div class="col-auto">
@@ -77,7 +77,7 @@
 
 
                                                 <div class="mb-0">
-                                                    <h3 class="text-danger fw-bold">{{$otstatus}}</h3>
+                                                    <h3 class="text-danger fw-bold">{{$prostatus}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,18 +103,20 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Department ID</th>
-                        <th scope="col">shift</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Status</th>
                       </tr>
                     </thead>
-                    @foreach ($otlog as $otlog)
+                    @foreach ($prodt as $prodt)
                     <tbody>
                       <tr>
-                        <td>{{$otlog->empId}}</td>
-                        <td>{{$otlog->department}}</td>
-                        <td>{{$otlog->shiftId}}</td>
-                        <td>{{$otlog->Otdate}}</td>
+                        <td>{{$prodt->empId}}</td>
+                        <td>{{$prodt->name}}</td>
+                        <td>{{$prodt->position}}</td>
+                        <td>{{$prodt->date}}</td>
+                        <td>{{ $prodt->target == '1' ? 'Covered' : 'Not Covered' }}</td>
                       </tr>
                     </tbody>
                     @endforeach

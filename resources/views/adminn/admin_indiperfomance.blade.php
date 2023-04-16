@@ -42,7 +42,7 @@
                                 <a href="{{route('admin.overperfomance', $emps->empId)}}" class="btn btn-success btn-sm">View</a>
                             </td>
                             <td class="text-center">
-                                <a href="" class="btn btn-info btn-sm">View</a>
+                                <a href="{{route('admin.productperfomance', $emps->empId)}}" class="btn btn-info btn-sm">View</a>
                             </td>
                           </tr>
                         </tbody>
