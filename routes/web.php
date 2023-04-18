@@ -88,6 +88,9 @@ Route::prefix('admin')->group(function (){
     Route::get('/perfomance/compare/Salery/{Id}',[PerfomanceController::class, 'CompareSalery'])->name('admin.salerycompare');
     //Evaluation
     Route::get('/perfomance/evaluation',[PerfomanceController::class, 'PerfomanceEvo'])->name('admin.perevaluation');
+    Route::get('/perfomance/evaluation/term&conditions',[PerfomanceController::class, 'PerfomanceTerms'])->name('admin.termsview');
+    Route::get('/perfomance/evaluation/evoselectemp',[PerfomanceController::class, 'EvoSelectEmp'])->name('admin.evoselect');
+    Route::get('/perfomance/evaluation/evoselectemp/view/{Id}',[PerfomanceController::class, 'EvoView'])->name('admin.evoview');
 
     //Loyalty Points
     Route::get('/loyaltypoint',[LoyaltyPointController::class, 'LoyalPointView'])->name('admin.loyalpoint');

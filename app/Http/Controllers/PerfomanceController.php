@@ -11,6 +11,8 @@ use App\Models\AbsantMemory;
 use App\Models\WorkHoursOT;
 use App\Models\OtMemory;
 use App\Models\Productivity;
+use App\Models\Presentages;
+use App\Models\Salery;
 
 class PerfomanceController extends Controller
 {
@@ -365,5 +367,68 @@ class PerfomanceController extends Controller
     public function PerfomanceEvo() {
 
         return view('adminn.evo.admin_evaluation');
+    }
+
+    public function PerfomanceTerms() {
+
+        $date = Carbon::now();
+        $previous =  $date->subMonth()->format('m');
+
+        //get present top
+        $presenttop = Presentages::orderBy('present', 'desc')
+        ->whereMonth('created_at', $previous)
+        ->get();
+        //get absant top
+        $absanttop = Presentages::orderBy('absant', 'desc')
+        ->whereMonth('created_at', $previous)
+        ->get();
+        //get overtime top
+        $ottop = Presentages::orderBy('overtime', 'desc')
+        ->whereMonth('created_at', $previous)
+        ->get();
+        //get salery top
+        //get april data for testing in here
+        $saltop  = Salery::orderBy('finalsal', 'desc')
+        //->whereMonth('created_at', $previous)
+        ->get();
+
+        return view('adminn.evo.admin_topperfomance', compact('presenttop','absanttop','ottop','saltop'));
+    }
+
+    public function EvoSelectEmp() {
+
+        $all = User::all();
+        return view('adminn.evo.admin_evoselect', compact('all'));
+    }
+
+    public function EvoView($Id) {
+
+        //getting pervious month
+        $date = Carbon::now();
+        $previous =  $date->subMonth()->format('m');
+
+        //attendance presentage
+        $pdates = AttendanceLog::where('emp_Id',$Id)
+        ->whereMonth('created_at', $previous)
+        ->sum('present');
+
+        $preage = $pdates / 26 * 100;
+        $preage1 = (integer)$preage;
+
+        //productivity presentage
+        $pro = Productivity::where('empId',$Id)
+        ->whereMonth('created_at', $previous)
+        ->sum('target');
+
+        $proage = $pro / 30 * 100;
+        $proage1 = (integer)$proage;
+
+        //getting overall presentage
+        $tot = $preage1 + $proage1;
+        $overall = $tot / 200 * 100;
+
+        //getting overall status
+
+        return view('adminn.evo.admin_evoview', compact('preage1','proage1','overall'));
     }
 }
