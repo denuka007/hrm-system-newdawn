@@ -428,7 +428,35 @@ class PerfomanceController extends Controller
         $overall = $tot / 200 * 100;
 
         //getting overall status
+        $ovstatus;
 
-        return view('adminn.evo.admin_evoview', compact('preage1','proage1','overall'));
+        if($overall == 100)
+        {
+            $ovstatus = 'Excellent';
+        }
+        elseif($overall >= 75)
+        {
+            $ovstatus = 'Very Good';
+        }
+        elseif($overall >= 65)
+        {
+            $ovstatus = 'Good';
+        }
+        elseif($overall >= 50)
+        {
+            $ovstatus = 'Normal';
+        }
+        elseif($overall >= 35)
+        {
+            $ovstatus = 'Poor';
+        }
+        else
+        {
+            $ovstatus = 'Very Poor';
+        }
+
+        //evaluation need to add db (future)
+
+        return view('adminn.evo.admin_evoview', compact('preage1','proage1','overall','ovstatus'));
     }
 }

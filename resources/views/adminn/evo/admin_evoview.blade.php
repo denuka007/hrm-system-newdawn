@@ -92,12 +92,25 @@
 
 
                                 <div class="mb-0">
-                                    <h3 class="fw-bold text-success">Good</h3>
+                                    <h3 class="fw-bold text-danger">{{$ovstatus}}</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Suggestions</h5>
+            </div>
+            <div class="card-body">
+                //here
             </div>
         </div>
     </div>

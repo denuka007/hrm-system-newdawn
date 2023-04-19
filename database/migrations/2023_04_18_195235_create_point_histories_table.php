@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluations', function (Blueprint $table) {
+        Schema::create('point_histories', function (Blueprint $table) {
             $table->id();
             $table->string('empId');
             $table->string('name');
-            $table->integer('attendance');
-            $table->integer('productivity');
-            $table->integer('overall');
-            $table->string('ovstatus');
             $table->date('month');
+            $table->date('date');
+            $table->integer('staradd');
+            $table->string('reason');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluations');
+        Schema::dropIfExists('point_histories');
     }
 };

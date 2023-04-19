@@ -14,19 +14,19 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col mt-0 ">
-                                        <h5 class="card-title ">Terms and Conditions</h5>
+                                        <h5 class="card-title ">Points Management</h5>
                                     </div>
 
                                     <div class="col-auto">
                                         <div class="stat text-primary">
-                                            <i class="align-middle" data-feather="help-circle"></i>
+                                            <i class="align-middle" data-feather="settings"></i>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="mb-0">
-                                    <a href="" class="btn btn-primary btn-rounded btn-sm">View</a>
+                                    <a href="{{route('admin.pointmange')}}" class="btn btn-primary btn-rounded btn-sm">View</a>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
 
 
                                 <div class="mb-0">
-                                    <a href="" class="btn btn-info btn-rounded btn-sm">Go</a>
+                                    <a href="{{route('admin.taskassign')}}" class="btn btn-info btn-rounded btn-sm">Go</a>
                                 </div>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\ManagerControllers\OverTimeController;
 use App\Http\Controllers\EmployeeControllers\EmpattendanceController;
 use App\Http\Controllers\EmployeeControllers\InboxController;
 use App\Http\Controllers\EmployeeControllers\SaleryController;
+use App\Http\Controllers\EmployeeControllers\EmpLoyalPointsController;
 use App\Http\Controllers\AdminControllers\PayrollController;
 use App\Http\Controllers\AdminControllers\AdminEmployeeController;
 use App\Http\Controllers\AdminControllers\ProjectandClientController;
@@ -94,6 +95,10 @@ Route::prefix('admin')->group(function (){
 
     //Loyalty Points
     Route::get('/loyaltypoint',[LoyaltyPointController::class, 'LoyalPointView'])->name('admin.loyalpoint');
+    Route::get('/loyaltypoint/pointmanagement',[LoyaltyPointController::class, 'LoyalPointManage'])->name('admin.pointmange');
+    Route::get('/loyaltypoint/pointmanagement/pointassign/{Id}',[LoyaltyPointController::class, 'LoyalPointAssign'])->name('admin.pointassign');
+    Route::get('/loyaltypoint/taskassign',[LoyaltyPointController::class, 'TaskView'])->name('admin.taskassign');
+    Route::post('/loyaltypoint/taskassign/done',[LoyaltyPointController::class, 'TaskAdd'])->name('admin.taskadd');
 
 
     //Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');
@@ -200,6 +205,8 @@ Route::get('/attendance/clearleave/{Id}', [EmpattendanceController::class, 'Clea
 //salery
 Route::get('/salery', [SaleryController::class, 'SaleryView'])->middleware(['auth', 'verified'])->name('emp.saleryview');
 Route::get('/salery/advance/{Id}', [SaleryController::class, 'AdvanceReq'])->middleware(['auth', 'verified'])->name('emp.advancereq');
+Route::get('/loyalpoint', [EmpLoyalPointsController::class, 'LoyalPointView'])->middleware(['auth', 'verified'])->name('emp.loyalpoint');
+
 
 
 
