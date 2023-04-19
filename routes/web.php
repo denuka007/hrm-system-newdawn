@@ -206,6 +206,8 @@ Route::get('/attendance/clearleave/{Id}', [EmpattendanceController::class, 'Clea
 Route::get('/salery', [SaleryController::class, 'SaleryView'])->middleware(['auth', 'verified'])->name('emp.saleryview');
 Route::get('/salery/advance/{Id}', [SaleryController::class, 'AdvanceReq'])->middleware(['auth', 'verified'])->name('emp.advancereq');
 Route::get('/loyalpoint', [EmpLoyalPointsController::class, 'LoyalPointView'])->middleware(['auth', 'verified'])->name('emp.loyalpoint');
+Route::get('/loyalpoint/redeempoint', [EmpLoyalPointsController::class, 'RedeemPointsView'])->middleware(['auth', 'verified'])->name('emp.redeempoints');
+Route::post('/loyalpoint/redeempoint/done', [EmpLoyalPointsController::class, 'RedeemPointsDone'])->middleware(['auth', 'verified'])->name('emp.redeemdone');
 
 
 
