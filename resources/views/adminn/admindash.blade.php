@@ -114,25 +114,25 @@
                       <tr>
                         <th scope="row">EMP-01</th>
                         <td>Tommy Shelby</td>
-                        <td>Otto</td>
+                        <td>Tailor</td>
                         <td>22%</td>
                       </tr>
                       <tr>
                         <th scope="row">EMP-02</th>
                         <td>Arthur Shelby</td>
-                        <td>Thornton</td>
+                        <td>Machine operator</td>
                         <td>12%</td>
                       </tr>
                       <tr>
                         <th scope="row">EMP-02</th>
                         <td>John Shelby</td>
-                        <td>Thornton</td>
+                        <td>Designer</td>
                         <td>9%</td>
                       </tr>
                       <tr>
                         <th scope="row">EMP-02</th>
-                        <td>Jacob Scoff</td>
-                        <td>Thornton</td>
+                        <td>Denuka Uwanpriya</td>
+                        <td>Designer</td>
                         <td>9%</td>
                       </tr>
 
@@ -147,10 +147,10 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Empty card</h5>
+                <h5 class="card-title mb-0">statistices</h5>
             </div>
             <div class="card-body">
-                <h4>Content Here////</h4>
+                <h4></h4>
             </div>
         </div>
     </div>

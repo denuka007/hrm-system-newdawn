@@ -30,9 +30,6 @@
                                             <div class="col-2">
                                             <a href="" class="btn btn-danger btn-sm">Reset</a>
                                             </div>
-                                            <div class="col-2 ms-3">
-                                                <a href="" class="btn btn-success btn-sm">Reedom</a>
-                                                </div>
                                         </div>
                                     </div>
                                 </div>

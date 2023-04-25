@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\Points;
 use App\Models\PointHistory;
+use App\Models\redeem;
 
 class EmpLoyalPointsController extends Controller
 {
@@ -52,6 +53,22 @@ class EmpLoyalPointsController extends Controller
         }
         else
         {
+
+            $redem = new redeem();
+
+            $redem->empId = $id;
+            $redem->name = Auth::user()->name;
+            $redem->stars = $redeem;
+            $redem->date = Carbon::now()->toDateString();
+            $redem->save();
+
+            $starget = Points::where('empId', $id)->get();
+            foreach($starget as $starget)
+            $strid = $starget->id;
+
+            $pointst = Points::find($strid);
+            $pointst->decrement('starcount', $redeem);
+
             return back()->with('status','Point Redeem is success');
         }
     }

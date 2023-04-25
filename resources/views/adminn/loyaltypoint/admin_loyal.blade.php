@@ -26,8 +26,10 @@
 
 
                                 <div class="mb-0">
-                                    <a href="{{route('admin.pointmange')}}" class="btn btn-primary btn-rounded btn-sm">View</a>
+                                    <a href="{{route('admin.pointmange')}}" class="btn btn-primary btn-rounded btn-sm">Manage</a>
+                                    <a href="" class="btn btn-success btn-rounded btn-sm">Redeem</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>

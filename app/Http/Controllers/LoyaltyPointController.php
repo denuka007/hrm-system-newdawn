@@ -27,7 +27,7 @@ class LoyaltyPointController extends Controller
 
     public function LoyalPointManage() {
 
-        $now = Carbon::now()->startOfMonth(); //Carbon::now() ->this code here
+        $now = Carbon::now(); //Carbon::now() ->this code here
         $start = Carbon::now()->startOfMonth();
 
         if($now == $start)
